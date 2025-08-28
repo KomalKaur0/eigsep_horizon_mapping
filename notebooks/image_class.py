@@ -23,7 +23,7 @@ class Image:
             angle WRT the normal to the lens along the horizontal the camera was pointed
         '''
         
-        self.photo = #TODO: read the photo
+        self.photo = pathname
         self.label = label
         self.lat = lat
         self.lon = lon
@@ -76,3 +76,10 @@ class Image:
         acceptable_offset = 5 #m
 
         return interped_alt - acceptable_offset < alt < interped_alt + acceptable_offset
+    
+    def open(self) -> None:
+        '''
+        function to open the photo
+        TODO: think about use cases, maybe healpy related or something
+        '''
+        pass
