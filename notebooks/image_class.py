@@ -1,7 +1,8 @@
 from eigsep_terrain.marjum_dem import MarjumDEM as DEM
 
 class Image:
-    def __init__(self, pathname, label, lat=None, lon=None, alt=None, angle_up=None, angle_side=None) -> None:
+    def __init__(self, pathname, label, lat=None, lon=None, alt=None, angle_up=None, angle_side=None,
+                 ver_weight=None, hor_weight=None, dis_weight=None) -> None:
         '''
         constructor for image class
 
@@ -21,6 +22,18 @@ class Image:
             angle above the horizontal the camera was pointed
         angle_side : float, optional
             angle WRT the normal to the lens along the horizontal the camera was pointed
+        ver_weight : float, optional
+            indicates accuracy of the crosshair along the vertical axis,
+            equal to 1/antentta's nonzero distance in pixels from vertical bar
+            (ie: higher ver_weight means more accurate)
+        hor_weight : float, optional
+            indicates accuracy of the crosshair along the horizontal axis,
+            equal to 1/antentta's nonzero distance in pixels from horizontal bar
+            (ie: higher hor_weight means more accurate)
+        dis_weight : float, optional
+            indicates accuracy of the photo based on distance to the antenna,
+            equal to area the antenna takes up on the screen in pixels^2
+            (ie: higher dis_weight means more accurate)
         '''
         
         self.photo = pathname
@@ -30,6 +43,9 @@ class Image:
         self.alt = alt
         self.angle_up = angle_up
         self.angle_side = angle_side
+        self.ver_weight = ver_weight
+        self.hor_weight = hor_weight
+        self.dis_weight = dis_weight
 
         #TODO: think about storing error bars
 
