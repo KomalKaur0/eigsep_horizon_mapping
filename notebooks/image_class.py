@@ -20,6 +20,7 @@ class Image:
             altitude the photo was taken at [m]
         heading : float, optional
             degrees from north the camera was facing
+            north as 0° (or 360°), east as 90°, south as 180°, and west as 270°
         angle_up : float, optional
             angle above the horizontal the camera was pointed [deg]
         ver_weight : float, optional
@@ -47,7 +48,6 @@ class Image:
         self.hor_weight = hor_weight
         self.dis_weight = dis_weight
 
-        #TODO: think about storing error bars
 
     def check_valid_position(self, lat=None, lon=None, alt=None) -> bool:
         '''
