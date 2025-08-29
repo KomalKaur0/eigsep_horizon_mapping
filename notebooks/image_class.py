@@ -1,8 +1,8 @@
 from eigsep_terrain.marjum_dem import MarjumDEM as DEM
 
 class Image:
-    def __init__(self, pathname, label, lat=None, lon=None, alt=None, angle_up=None, angle_side=None,
-                 ver_weight=None, hor_weight=None, dis_weight=None) -> None:
+    def __init__(self, pathname, label, lat=None, lon=None, alt=None, heading=None, 
+                 angle_up=None, ver_weight=None, hor_weight=None, dis_weight=None) -> None:
         '''
         constructor for image class
 
@@ -17,11 +17,11 @@ class Image:
         lon : float, optional
             longitude the photo was taken at
         alt : float, optional
-            altitude the photo was taken at
+            altitude the photo was taken at [m]
+        heading : float, optional
+            degrees from north the camera was facing
         angle_up : float, optional
-            angle above the horizontal the camera was pointed
-        angle_side : float, optional
-            angle WRT the normal to the lens along the horizontal the camera was pointed
+            angle above the horizontal the camera was pointed [deg]
         ver_weight : float, optional
             indicates accuracy of the crosshair along the vertical axis,
             equal to 1/antentta's nonzero distance in pixels from vertical bar
@@ -41,8 +41,8 @@ class Image:
         self.lat = lat
         self.lon = lon
         self.alt = alt
+        self.heading = heading
         self.angle_up = angle_up
-        self.angle_side = angle_side
         self.ver_weight = ver_weight
         self.hor_weight = hor_weight
         self.dis_weight = dis_weight
